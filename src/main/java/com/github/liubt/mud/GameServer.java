@@ -63,6 +63,6 @@ public class GameServer {
     }
 
     public static void main(String[] args) throws Exception {
-        new GameServer(8888).run();
+        new GameServer(8889).run();
     }
 }

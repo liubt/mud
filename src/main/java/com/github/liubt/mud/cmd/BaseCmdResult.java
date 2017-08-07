@@ -8,6 +8,7 @@ import lombok.Setter;
 public class BaseCmdResult {
 
     private boolean success = true;
+    private String message;
     private String cmd;
 
     public BaseCmdResult(String cmd) {

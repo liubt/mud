@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/notice.js"></script>
+</head>
+<body style="background-color: black;">
+
+    <div id="indexDiv" style="margin-top: 60px;text-align: center;">
+        <img src="img/index.png" style="">
+        <div style="display: block;color: gray;padding: 15px;font-size: 24px;">登&nbsp;&nbsp;录</div>
+        <div style="display: block;color: gray;padding: 15px;font-size: 24px;">注&nbsp;&nbsp;册</div>
+    </div>
+    <div id="loginDiv" style="visibility:hidden;">
+        用户ID：
+        <input id="userId" type="text" style="width: 300px">
+        <input type="button" value="登录" onclick="login()">
+    </div>
+    <div id="mainDiv" style="visibility: hidden;">
+        <textarea id="txtMessage" style="width: 500px; height: 300px;"></textarea>
+    </div>
+</body>
+</html>

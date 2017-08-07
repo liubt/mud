@@ -5,6 +5,7 @@ package com.github.liubt.mud.consts;
  */
 public class CmdConsts {
 
+    public static final String CMD_REGISTER = "register";
     public static final String CMD_LOGIN = "login";
     public static final String CMD_NOTICE = "notice";
 
