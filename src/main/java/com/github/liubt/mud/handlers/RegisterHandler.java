@@ -3,6 +3,7 @@ package com.github.liubt.mud.handlers;
 import com.github.liubt.mud.cmd.OriginalCmd;
 import com.github.liubt.mud.cmd.RegisterCmd;
 import com.github.liubt.mud.cmd.RegisterCmdResult;
+import com.github.liubt.mud.model.UserPassword;
 import com.github.liubt.mud.redis.RedisDAO;
 import com.github.liubt.mud.utils.JsonUtils;
 import io.netty.channel.ChannelHandlerContext;
@@ -16,7 +17,11 @@ public class RegisterHandler {
         RegisterCmd registerCmd = JsonUtils.map2Pojo(cmd.getData(), RegisterCmd.class);
         RegisterCmdResult cmdResult = new RegisterCmdResult();
 
-        if(RedisDAO.hasKey(registerCmd.getUserId())) {
+        UserPassword userPassword = new UserPassword();
+        userPassword.setUserId(registerCmd.getUserId());
+        userPassword.setPassword(registerCmd.getPassword());
+        
+        if(RedisDAO.hasKey(userPassword.getKey())) {
             cmdResult.setSuccess(false);
             cmdResult.setMessage("用户ID已经存在");
             ctx.writeAndFlush(cmdResult);
@@ -29,8 +34,8 @@ public class RegisterHandler {
             ctx.writeAndFlush(cmdResult);
             return;
         }
-        
-        RedisDAO.set("password_" + registerCmd.getUserId(), registerCmd.getPassword());
+
+        RedisDAO.set(userPassword.getKey(), userPassword.getData());
         ctx.writeAndFlush(new RegisterCmd());
     }
 }

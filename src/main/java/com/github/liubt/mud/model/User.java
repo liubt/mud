@@ -4,25 +4,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 保存用户密码。key形如：password_{userId}
+ * 保存用户基本信息。key形如：{userId}
  */
 @Getter
 @Setter
-public class UserPassword implements RedisModel {
-
-    private static final String KEY_PREFIX = "password_";
-
+public class User implements RedisModel {
     public String userId;
     public String password;
 
 
     @Override
     public String getKey() {
-        return KEY_PREFIX + userId;
+        return userId;
     }
 
     @Override
     public String getData() {
-        return password;
+        return null;
     }
 }
